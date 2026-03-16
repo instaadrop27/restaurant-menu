@@ -1,11 +1,337 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعه غذایی گیلاتو</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            direction: rtl;
+        }
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .contact {
+            font-size: 1em;
+            opacity: 0.85;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        .categories {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .categories h2 {
+            font-size: 2em;
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .category-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .category-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .category-box:hover::before {
+            opacity: 1;
+        }
+        .category-box.kebab {
+            background: linear-gradient(135deg, #ff6b35, #d9534f);
+            color: white;
+        }
+        .category-box.food {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+        .category-box.special {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            color: white;
+        }
+        .category-box.sandwich {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            color: white;
+        }
+        .category-box.pizza {
+            background: linear-gradient(135deg, #e83e8c, #dc3545);
+            color: white;
+        }
+        .category-box h3 {
+            color: inherit;
+            font-size: 1.5em;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .menu-display {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+        .menu-display.show {
+            display: block;
+        }
+        .menu-title {
+            font-size: 2em;
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #f7931e;
+            padding-bottom: 10px;
+        }
+        .menu-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .menu-item h4 {
+            color: #333;
+            font-size: 1.3em;
+            margin: 0 0 10px 0;
+        }
+        .menu-item .price {
+            color: #ff6b35;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-btn:hover {
+            background: #e55a2b;
+        }
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-list {
+                grid-template-columns: 1fr;
+            }
+            .logo {
+                font-size: 2em;
+            }
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<img src="photo_2026-03-08_23-01-08.jpg">
+    <header>
+        <div class="logo">🍽️ مجموعه غذایی گیلاتو</div>
+        <div class="contact">📞 0792469946 &nbsp;&nbsp;📞 0789190444 <br> 📍 جبرئیل، چهارده متری  بالا<br>🚚 پیک فوری رایگان</div>
+    </header>
+
+    <section class="categories">
+        <h2>دسته‌بندی‌ها</h2>
+        <div class="category-grid">
+            <div class="category-box kebab" onclick="showMenu('kebab')">
+                <h3>🍖 انواع کباب</h3>
+            </div>
+            <div class="category-box food" onclick="showMenu('food')">
+                <h3>🍲 انواع خوراک</h3>
+            </div>
+            <div class="category-box special" onclick="showMenu('special')">
+                <h3>🎉 سرویس ویژه</h3>
+            </div>
+            <div class="category-box sandwich" onclick="showMenu('sandwich')">
+                <h3>🥪 انواع ساندویج</h3>
+            </div>
+            <div class="category-box pizza" onclick="showMenu('pizza')">
+                <h3>🍕 انواع پیتزا</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-display" id="menu-display">
+        <h2 class="menu-title" id="menu-title"></h2>
+        <div class="menu-list" id="menu-list"></div>
+        <button class="back-btn" onclick="hideMenu()">بازگشت</button>
+    </section>
+
+    <script>
+        const menus = {
+            kebab: [
+                { name: 'کباب پشتی', price: '۳۰۰ افغانی' },
+                { name: 'کباب  دیگی گوسفند', price: '۲۰۰ افغانی' },
+                { name: 'کباب دیگی مرغ', price: '۱۵۰ افغانی' },
+                { name: 'کباب کوبیده مخصوص', price: '۱۸۰ افغانی' },
+                { name: 'کباب کوبیده', price: '۱۲۰ افغانی' },
+                { name: 'کباب جوجه مخصوص', price: '۱۸۰ افغانی' },
+                { name: 'کباب جوجه', price: '۱۴۰ افغانی' },
+                { name: 'کباب سیخ', price: '۱۵۰ افغانی' },
+                { name: 'کباب بال و پاچین', price: '۱۵۰ افغانی' },
+                { name: 'کباب نگین', price: '۱۵۰ افغانی' }
+            ],
+            food: [
+                { name: 'قابلی ماهیچه', price: '۴۰۰ افغانی' },
+                { name: 'چلو ماهیچه', price: '۴۰۰ افغانی' },
+                { name: 'چلو کباب پشتی', price: '۳۵۰ افغانی' },
+                { name: 'قابلی با گوشت (دبل)', price: '۲۸۰ افغانی' },
+                { name: 'قابلی با گوشت (سنگل)', price: '۱۸۰ افغانی' },
+                { name: 'چلو کباب کوبیده مخصوص', price: '۲۳۰ افغانی' },
+                { name: 'چلو کباب جوجه مخصوص', price: '۲۲۰ افغانی' },
+                { name: 'چلو گوشت', price: '۲۰۰ افغانی' },
+                { name: 'چلو کباب نگین', price: '۱۸۰ افغانی' },
+                { name: 'چلو کباب جوجه', price: '۱۸۰ افغانی' },
+                { name: 'چلو مرغ', price: '۱۷۰ افغانی' },
+                { name: 'چلو کباب کوبیده', price: '۱۵۰ افغانی' },
+                { name: 'قابلی و قیمه', price: '۱۰۰ افغانی' },
+                { name: 'چکن اسپایسی', price: '۱۰۰ افغانی' },
+                { name: 'چکن پاپ کورن', price: '۱۰۰ افغانی' },
+                { name: 'چلو قیمه', price: '۸۰ افغانی' },
+                { name: 'املت صبحانه', price: '۸۰ افغانی' },
+                { name: 'قابلی ساده', price: '۷۰ افغانی' },
+                { name: 'چلو ساده', price: '۵۰ افغانی' }
+            ],
+            special: [
+                { name: 'سینی مخصوص هفت نفره', price: '۲۲۰۰ افغانی' },
+                { name: 'سینی مخصوص پنج نفره', price: '۱۸۰۰ افغانی' },
+                { name: 'سینی مخصوص چهار نفره', price: '۱۵۰۰ افغانی' },
+                { name: 'سینی مخصوص سه نفره', price: '۱۲۰۰ افغانی' },
+                { name: 'سینی مخصوص دو نفره', price: '۸۰۰ افغانی' },
+                { name: 'سینی مخصوص یک نفره', price: '۵۰۰ افغانی' }
+            ],
+            sandwich: [
+                { name: 'ساندویچ میکس گیلاتو', price: '۱۴۰ افغانی' },
+                { name: 'ساندویچ مخصوص گیلاتو', price: '۱۲۰ افغانی' },
+                { name: 'ساندویچ هات داگ پنیری', price: '۱۲۰ افغانی' },
+                { name: 'ساندویچ تن ماهی', price: '۱۰۰ افغانی' },
+                { name: 'ساندویچ کوکتل پنیری', price: '۱۰۰ افغانی' },
+                { name: 'ساندویچ مرغ و قارچ', price: '۱۰۰ افغانی' },
+                { name: 'ساندویچ برگر مخصوص', price: '۱۰۰ افغانی' },
+                { name: 'ساندویچ مرغ', price: '۱۰۰ افغانی' },
+                { name: 'ساندویچ مخلوط', price: '۹۰ افغانی' },
+                { name: 'چیز برگر', price: '۹۰ افغانی' },
+                { name: 'ساندویچ کباب کوبیده', price: '۸۰ افغانی' },
+                { name: 'ساندویچ هات داگ', price: '۸۰ افغانی' },
+                { name: 'ساندویچ کوکتل', price: '۷۰ افغانی' },
+                { name: 'ساندویچ کباب سرد و گرم', price: '۶۰ افغانی' },
+                { name: 'ساندویچ برگر ساده', price: '۶۰ افغانی' },
+                { name: 'ساندویچ جیگر', price: '۶۰ افغانی' },
+                { name: 'سوسیس بندری', price: '۶۰ افغانی' },
+                { name: 'ساندویچ فلافل لبنانی', price: '۵۰ افغانی' },
+                { name: 'ساندویچ سوسیس', price: '۵۰ افغانی' },
+                { name: 'ساندویچ چیپس', price: '۵۰ افغانی' },
+                { name: 'مخلوط فلافل و سوسیس', price: '۵۰ افغانی' },
+                { name: 'چیپس ساده', price: '۵۰ افغانی' }
+            ],
+            pizza: [
+                { name: 'پیتزا مخصوص گیلاتو', price: '۲۲۰ / ۲۸۰ / ۳۸۰ افغانی' },
+                { name: 'پیتزا گوشت', price: '۲۲۰ / ۲۸۰ / ۳۸۰ افغانی' },
+                { name: 'پیتزا مخلوط', price: '۲۲۰ / ۲۷۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا ماهی', price: '۲۲۰ / ۲۷۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا مرغ', price: '۲۰۰ / ۲۵۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا مرغ و قارچ', price: '۲۰۰ / ۲۵۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا کالباس', price: '۲۰۰ / ۲۵۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا کوکتل', price: '۲۰۰ / ۲۵۰ / ۳۵۰ افغانی' },
+                { name: 'پیتزا سبزیجات', price: '۱۵۰ / ۲۰۰ / ۳۰۰ افغانی' }
+            ]
+        };
+
+        function showMenu(category) {
+            document.querySelector('.categories').style.display = 'none';
+            const display = document.getElementById('menu-display');
+            display.classList.add('show');
+            document.getElementById('menu-title').textContent = getCategoryTitle(category);
+            const list = document.getElementById('menu-list');
+            list.innerHTML = '';
+            menus[category].forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'menu-item';
+                div.innerHTML = `<h4>${item.name}</h4><div class="price">${item.price}</div>`;
+                list.appendChild(div);
+            });
+        }
+
+        function hideMenu() {
+            document.querySelector('.categories').style.display = 'block';
+            document.getElementById('menu-display').classList.remove('show');
+        }
+
+        function getCategoryTitle(category) {
+            const titles = {
+                kebab: 'انواع کباب',
+                food: 'انواع خوراک',
+                special: 'سرویس ویژه',
+                sandwich: 'انواع ساندویج',
+                pizza: 'انواع پیتزا'
+            };
+            return titles[category];
+        }
+    </script>
+    <footer>
+        <p>توسعه یافته توسط <a href="http://www.novatechsoft.com" target="_blank">www.novatechsoft.com</a></p>
+    </footer>
 </body>
 </html>
