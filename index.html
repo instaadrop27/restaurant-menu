@@ -100,6 +100,30 @@
             background: linear-gradient(135deg, #e83e8c, #dc3545);
             color: white;
         }
+        .category-box.drinks {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+        }
+        .category-box.hot {
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            color: white;
+        }
+        .category-box.shake {
+            background: linear-gradient(135deg, #f7797d, #FBD786);
+            color: white;
+        }
+        .category-box.shake-special {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: white;
+        }
+        .category-box.icecream {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+        .category-box.icecream-kilo {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
         .category-box h3 {
             color: inherit;
             font-size: 1.5em;
@@ -139,6 +163,21 @@
             color: #333;
             font-size: 1.3em;
             margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .item-icon {
+            font-size: 1.4em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 0.5em;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
         }
         .menu-item .price {
             color: #ff6b35;
@@ -189,12 +228,31 @@
 <body>
     <header>
         <div class="logo">🍽️ مجموعه غذایی گیلاتو</div>
-        <div class="contact">📞 0792469946 &nbsp;&nbsp;📞 0789190444 <br> 📍 جبرئیل، چهارده متری  بالا<br>🚚 پیک فوری رایگان</div>
+        <div class="subtitle">طعم واقعی ایرانی</div>
+        <div class="contact">📍 جبرئیل، چهارراه متری بالا<br>🚚 پیک فوری رایگان<br>📞 0792469946 &nbsp;&nbsp;📞 0789190444</div>
     </header>
 
     <section class="categories">
         <h2>دسته‌بندی‌ها</h2>
         <div class="category-grid">
+            <div class="category-box icecream" onclick="showMenu('icecream')">
+                <h3>🍨 انواع بستنی</h3>
+            </div>
+            <div class="category-box shake" onclick="showMenu('shake')">
+                <h3>🍹 انواع شیک</h3>
+            </div>
+            <div class="category-box shake-special" onclick="showMenu('shakeSpecial')">
+                <h3>🍫 شیک‌های مخصوص</h3>
+            </div>
+            <div class="category-box drinks" onclick="showMenu('drinks')">
+                <h3>🥤 نوشیدنی فصل</h3>
+            </div>
+            <div class="category-box hot" onclick="showMenu('hot')">
+                <h3>☕ نوشیدنی گرم</h3>
+            </div>
+            <div class="category-box icecream-kilo" onclick="showMenu('icecreamKilo')">
+                <h3>🍧 بستنی کیلویی</h3>
+            </div>
             <div class="category-box kebab" onclick="showMenu('kebab')">
                 <h3>🍖 انواع کباب</h3>
             </div>
@@ -221,6 +279,99 @@
 
     <script>
         const menus = {
+            icecream: [
+                { name: 'بستنی ایتالیایی مخصوص گیلاتو', price: '۱۰۰ افغانی' },
+                { name: 'شیر یخ مخصوص', price: '۱۰۰ افغانی' },
+                { name: 'بستنی ایتالیایی ساده', price: '۵۰ افغانی' },
+                { name: 'بستنی مغزدار مخصوص', price: '۵۰ افغانی' },
+                { name: 'بستنی بادامی', price: '۵۰ افغانی' },
+                { name: 'شیر یخ ساده', price: '۵۰ افغانی' },
+                { name: 'بستنی پسته ای', price: '۵۰ افغانی' },
+                { name: 'بستنی ترکی', price: '۵۰ افغانی' },
+                { name: 'بستنی میوه ای', price: '۵۰ افغانی' },
+                { name: 'بستنی شکلاتی', price: '۵۰ افغانی' },
+                { name: 'بستنی زعفرانی', price: '۵۰ افغانی' },
+                { name: 'بستنی وانیلی', price: '۵۰ افغانی' },
+                { name: 'بستنی قهوه', price: '۵۰ افغانی' },
+                { name: 'بستنی موهیتو', price: '۵۰ افغانی' },
+                { name: 'بستنی مغزدار', price: '۴۰ افغانی' },
+                { name: 'بستنی سنتی ساده', price: '۳۰ افغانی' },
+                { name: 'بستنی نانی مغزدار', price: '۳۰ افغانی' },
+                { name: 'فالوده بستنی', price: '۲۰ افغانی' }
+            ],
+            shake: [
+                { name: 'معجون مخصوص گیلاتو', price: '۲۰۰ افغانی' },
+                { name: 'معجون مخصوص', price: '۱۵۰ افغانی' },
+                { name: 'معجون ساده', price: '۱۰۰ افغانی' },
+                { name: 'ام مخصوص', price: '۱۳۰ افغانی' },
+                { name: 'ام ساده', price: '۱۰۰ افغانی' },
+                { name: 'شیک آناناس', price: '۱۲۰ افغانی' },
+                { name: 'شیر پسته', price: '۱۲۰ افغانی' },
+                { name: 'اسموتی آناناس موز', price: '۱۲۰ افغانی' },
+                { name: 'اسموتی سیب موز', price: '۱۰۰ افغانی' },
+                { name: 'اسموتی توت فرنگی پرتقال', price: '۱۰۰ افغانی' },
+                { name: 'اسموتی مخصوص توت فرنگی', price: '۱۰۰ افغانی' },
+                { name: 'شیر موز مخصوص', price: '۹۰ افغانی' },
+                { name: 'شیر موز ساده', price: '۸۰ افغانی' },
+                { name: 'شیر خرما', price: '۹۰ افغانی' },
+                { name: 'آب هویج بستنی', price: '۷۰ افغانی' },
+                { name: 'کافه سرد', price: '۷۰ افغانی' }
+            ],
+            shakeSpecial: [
+                { name: 'نوتیلا', price: '۱۳۰ افغانی' },
+                { name: 'دوبل شکلات', price: '۱۳۰ افغانی' },
+                { name: 'بافونتی', price: '۱۲۰ افغانی' },
+                { name: 'کیت کت', price: '۱۲۰ افغانی' },
+                { name: 'شیک اوریو', price: '۱۲۰ افغانی' }
+            ],
+            drinks: [
+                { name: 'میکس گیلاتو', price: '۱۳۰ افغانی' },
+                { name: 'آب آناناس', price: '۱۰۰ افغانی' },
+                { name: 'آب پرتقال', price: '۸۰ افغانی' },
+                { name: 'آب سیب', price: '۸۰ افغانی' },
+                { name: 'لیمو نعناع', price: '۷۰ افغانی' },
+                { name: 'لیموناد', price: '۶۰ افغانی' },
+                { name: 'جوس شفتالو', price: '۶۰ افغانی' },
+                { name: 'جوس توت فرنگی', price: '۶۰ افغانی' },
+                { name: 'جوس انار', price: '۶۰ افغانی' },
+                { name: 'آب هندوانه', price: '۶۰ افغانی' },
+                { name: 'آب طالبی', price: '۶۰ افغانی' },
+                { name: 'جوس کیوی', price: '۶۰ افغانی' },
+                { name: 'آب هویج', price: '۶۰ افغانی' }
+            ],
+            hot: [
+                { name: 'چای مخصوص', price: '۱۰۰ افغانی' },
+                { name: 'چای زعفران', price: '۸۰ افغانی' },
+                { name: 'نسکافه', price: '۵۰ افغانی' },
+                { name: 'کاپوچینو', price: '۵۰ افغانی' },
+                { name: 'کافه ایتالیایی', price: '۵۰ افغانی' },
+                { name: 'شکلات داغ', price: '۵۰ افغانی' },
+                { name: 'چای دارچین', price: '۴۰ افغانی' },
+                { name: 'چای سیاه', price: '۳۰ افغانی' },
+                { name: 'چای سبز', price: '۳۰ افغانی' },
+                { name: 'کیک فانتزی', price: '۲۰ افغانی' },
+                { name: 'دمنوش نعناع', price: '۲۰ افغانی' },
+                { name: 'دمنوش سیب', price: '۲۰ افغانی' },
+                { name: 'دمنوش شفتالو', price: '۲۰ افغانی' },
+                { name: 'دمنوش ترش', price: '۲۰ افغانی' },
+                { name: 'دمنوش انار', price: '۲۰ افغانی' },
+                { name: 'دمنوش لیمو', price: '۲۰ افغانی' },
+                { name: 'دمنوش پرتقال', price: '۲۰ افغانی' }
+            ],
+            icecreamKilo: [
+                { name: 'بستنی مغزدار مخصوص', price: '۳۵۰ افغانی' },
+                { name: 'بستنی ایتالیایی (یک کیلو)', price: '۳۵۰ افغانی' },
+                { name: 'بستنی ترکی', price: '۳۵۰ افغانی' },
+                { name: 'شیر یخ مخصوص', price: '۳۰۰ افغانی' },
+                { name: 'شیر یخ ساده', price: '۲۰۰ افغانی' },
+                { name: 'بستنی شکلاتی', price: '۳۰۰ افغانی' },
+                { name: 'بستنی بادامی', price: '۳۰۰ افغانی' },
+                { name: 'بستنی پسته ای', price: '۳۰۰ افغانی' },
+                { name: 'بستنی زعفرانی', price: '۳۰۰ افغانی' },
+                { name: 'بستنی میوه ای', price: '۳۰۰ افغانی' },
+                { name: 'بستنی سنتی مغزدار', price: '۲۰۰ افغانی' },
+                { name: 'بستنی سنتی ساده', price: '۱۷۰ افغانی' }
+            ],
             kebab: [
                 { name: 'کباب پشتی', price: '۳۰۰ افغانی' },
                 { name: 'کباب  دیگی گوسفند', price: '۲۰۰ افغانی' },
@@ -306,12 +457,30 @@
             document.getElementById('menu-title').textContent = getCategoryTitle(category);
             const list = document.getElementById('menu-list');
             list.innerHTML = '';
+            const icon = getCategoryIcon(category);
             menus[category].forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'menu-item';
-                div.innerHTML = `<h4>${item.name}</h4><div class="price">${item.price}</div>`;
+                div.innerHTML = `<h4><span class="item-icon">${icon}</span> ${item.name}</h4><div class="price">${item.price}</div>`;
                 list.appendChild(div);
             });
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                kebab: '🍖',
+                food: '🍲',
+                special: '🌟',
+                sandwich: '🥪',
+                pizza: '🍕',
+                drinks: '🥤',
+                hot: '☕',
+                shake: '🥛',
+                shakeSpecial: '🍫',
+                icecream: '🍨',
+                icecreamKilo: '🍧'
+            };
+            return icons[category] || '🍽️';
         }
 
         function hideMenu() {
@@ -325,7 +494,13 @@
                 food: 'انواع خوراک',
                 special: 'سرویس ویژه',
                 sandwich: 'انواع ساندویج',
-                pizza: 'انواع پیتزا'
+                pizza: 'انواع پیتزا',
+                drinks: 'نوشیدنی فصل',
+                hot: 'نوشیدنی گرم',
+                shake: 'انواع شیک',
+                shakeSpecial: 'شیک‌های مخصوص',
+                icecream: 'انواع بستنی',
+                icecreamKilo: 'بستنی کیلویی'
             };
             return titles[category];
         }
